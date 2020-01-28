@@ -3,6 +3,7 @@ import './App.css';
 import {Login} from './components/login';
 import {Room} from './components/room';
 import * as request from 'superagent';
+import { apiRoot } from './config';
 
 const App = () => {
   const [roomData, setRoomData] = useState(null);
@@ -10,7 +11,7 @@ const App = () => {
     setRoomData({username, password, roomId});
   }
   const createRoom = ({username, password, roomName}) => {
-    request.post(`http://localhost:3000`).send({
+    request.post(`http://${apiRoot}`).send({
       username, password, roomName
     })
     .then(_res => {

@@ -3,6 +3,7 @@ import { MemberList } from './memberList';
 import { Control } from './control';
 import { Chat } from './chat';
 import "./room.scss"
+import { apiRoot } from '../config';
 
 
 export const Room = ({username, password, roomId, onError }) => {
@@ -66,7 +67,8 @@ export const Room = ({username, password, roomId, onError }) => {
   };
 
   if (!ws.current) {
-    const conn = new WebSocket(`ws://localhost:3000/room?username=${username}&password=${password}&roomId=${roomId}`);
+    console.log('API is at', apiRoot);
+    const conn = new WebSocket(`ws://${apiRoot}/room?username=${username}&password=${password}&roomId=${roomId}`);
     ws.current = conn;
   }
   const conn = ws.current;

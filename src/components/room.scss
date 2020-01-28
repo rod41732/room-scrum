@@ -1,14 +1,12 @@
 .room {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: auto auto minmax(0, 1fr);
-  // overflow: hidden;
-  // justify-content: stretch;
+  grid-template-rows: auto auto auto minmax(0, 1fr);
   width: 100%;
   height: 100vh;
   max-height: 100vh;
   max-width: 768px;
   background-color: #fafafa;
-  padding: 48px;
+  padding: 24px;
   box-sizing: border-box;
 }

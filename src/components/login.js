@@ -8,12 +8,14 @@ export const Login = ({onCreate, onJoin}) => {
   const roomNameInput = useRef();
   const roomIdInput = useRef();
 
-  const [hasLoggedIn, setLoggedIn] = useState(false);
-  if (!hasLoggedIn) {
-    onCreate({username: '111', roomname: "doge"})
-  }
+  // auto login for debug
+
+  // const [hasLoggedIn, setLoggedIn] = useState(false);
+  // if (!hasLoggedIn) {
+  //   onCreate({username: '111', roomName: "doge"})
+  // }
   return <div className="login">
-    <div className="header">Room scrum</div >
+    <div className="header">Room scrum : {isJoining ? "Join" : "Create"}</div >
     <label>Username</label>
     <input className="input" ref={usernameInput}></input>
     <label>Room password (optional)</label>

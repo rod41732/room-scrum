@@ -6,22 +6,22 @@ const fakeMessages = [
     username: "doge",
       message: "sadjkl;kjfwaf;asdasd; ".repeat(10)
   },
-  // {
-  //   username: "doge",
-  //     message: "sadjkl;kjfwaf;asdasd; ".repeat(10)
-  // },
-  // {
-  //   username: "doge",
-  //     message: "sadjkl;kjfwaf;asdasd; ".repeat(10)
-  // },
-  // {
-  //   username: "doge",
-  //     message: "sadjkl;kjfwaf;asdasd; ".repeat(10)
-  // },
-  // {
-  //   username: "doge",
-  //     message: "sadjkl;kjfwaf;asdasd; ".repeat(10)
-  // },
+  {
+    username: "doge",
+      message: "sadjkl;kjfwaf;asdasd; ".repeat(10)
+  },
+  {
+    username: "doge",
+      message: "sadjkl;kjfwaf;asdasd; ".repeat(10)
+  },
+  {
+    username: "doge",
+      message: "sadjkl;kjfwaf;asdasd; ".repeat(10)
+  },
+  {
+    username: "doge",
+      message: "sadjkl;kjfwaf;asdasd; ".repeat(10)
+  },
 ]
 
 export const Chat = ({ messages, onSend }) => {

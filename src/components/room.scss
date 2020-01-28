@@ -1,6 +1,7 @@
 .room {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto minmax(0, 1fr);
   // overflow: hidden;
   // justify-content: stretch;
   width: 100%;

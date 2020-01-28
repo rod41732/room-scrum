@@ -5,7 +5,7 @@ export const Login = ({onCreate, onJoin}) => {
   const [isJoining, setJoining] = useState(false);
   const usernameInput = useRef();
   const passwordInput = useRef();
-  const roomnameInput = useRef();
+  const roomNameInput = useRef();
   const roomIdInput = useRef();
 
   const [hasLoggedIn, setLoggedIn] = useState(false);
@@ -34,14 +34,14 @@ export const Login = ({onCreate, onJoin}) => {
         </>
         :
         <>
-          <label>Roomname</label>
-          <input className="input" ref={roomnameInput}></input>
+          <label> Room Name </label>
+          <input className="input" ref={roomNameInput}></input>
           <button className="btn pointer" onClick={() => {
             const username = usernameInput.current.value;
             const password = passwordInput.current.value;
-            const roomname = roomnameInput.current.value;
+            const roomName = roomNameInput.current.value;
             onCreate({
-              username, password, roomname,
+              username, password, roomName,
             });
           }}> Create </button>
         </>

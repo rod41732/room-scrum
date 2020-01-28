@@ -16,9 +16,9 @@ const fakeMembers = [
   {username: "foo", vote: 112},
 ]
 
-export const MemberList = ({members}) => {
+export const MemberList = ({members, roomName}) => {
   return <div className="member-list-container">
-    <div className="header"> Members </div>
+    <div className="header"> Room: {roomName} </div>
     <div className="member-list">
       {
         members.map(member => (

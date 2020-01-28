@@ -29,8 +29,7 @@ export const Chat = ({ messages, onSend }) => {
   return <div className="chat-container">
     <div className="chat-list">
       {
-        fakeMessages.map(msg => (
-          <div className="chat-message">
+        messages.map(msg => (
             <div className="chat-wrapper">
               <div className="message-sender"> {msg.username}</div>
               <div className="message-text"> {msg.message}</div>

@@ -21,7 +21,7 @@ export const MemberList = ({members}) => {
     <div className="header"> Members </div>
     <div className="member-list">
       {
-        fakeMembers.map(member => (
+        members.map(member => (
           <div className="member-item">
             <div className="member-name"> {member.username}</div>
             <div className="member-vote"> voted: {member.vote || "???"}</div>

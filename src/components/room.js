@@ -5,16 +5,20 @@ import { Chat } from './chat';
 import "./room.scss"
 
 
-export const Room = ({username, password, roomId }) => {
+export const Room = ({username, password, roomId, onError }) => {
   const ws = useRef();
   const [room, setRoom] = useState(null);
+  const [hasReveal, setReveal] = useState(false);
 
-  console.log('room is', room);
   const onMessage = (evt) => {
     const message = evt.data;
     const {event, data} = JSON.parse(message);
-    console.log({event, data});
+    console.log("message", {event, data});
     switch (event) {
+      case 'error':
+        onError();
+        alert(data);
+        break;
       case 'info':
         setRoom(data);
         console.log('set room', data);
@@ -23,10 +27,9 @@ export const Room = ({username, password, roomId }) => {
         const {username: user} = data;
         setRoom({
           ...room,
-          chat: [...room.chat, {
-            username: 'system',
-            message: `${user} has joined the chat`,
-          }],
+          users: [...room.users, {
+            username: user,
+          }]
         });
         break;
       case 'chat': 
@@ -37,7 +40,28 @@ export const Room = ({username, password, roomId }) => {
         });
         break;
       case 'reveal':
-        
+        setReveal(true);
+        setRoom({
+          ...room,
+          users: data,
+        });
+        break;
+      case 'system': // system message
+          setRoom({
+            ...room,
+            chat: [...room.chat, {
+              username: "system",
+              message: data,
+            }],
+          });
+          break;
+      case 'nextRound':
+        setReveal(false);
+        setRoom({
+          ...room,
+          users: data,
+        });
+        break;
     }
   };
 
@@ -45,12 +69,18 @@ export const Room = ({username, password, roomId }) => {
     const conn = new WebSocket(`ws://localhost:3000/room?username=${username}&password=${password}&roomId=${roomId}`);
     ws.current = conn;
   }
-  ws.current.onmessage = onMessage;
-
   const conn = ws.current;
-  const onReveal = () => {
+  conn.onerror = conn.onclose = onError;
+  conn.onmessage = onMessage;
+
+  const reveal = () => {
     conn.send(JSON.stringify({
       type: 'reveal'
+    }));
+  }
+  const nextRound = () => {
+    conn.send(JSON.stringify({
+      type: 'nextRound'
     }));
   }
 
@@ -71,9 +101,10 @@ export const Room = ({username, password, roomId }) => {
   if (room) {
     const {users, chat} = room;
     return <div className="room">
-      <MemberList members={users}/>
-      <Control onVote={onVote} onReveal={onReveal}/>
-      <Chat messages={chat} onSend={onSend}/>
+      <div> Room ID: {roomId} </div>
+      <MemberList members={users} roomName={room.name}/>
+      <Control onVote={onVote} onReveal={hasReveal ? nextRound: reveal} hasReveal={hasReveal}/>
+      <Chat messages={chat} onSend={onSend} myUsername={username}/>
       {/* <p>{JSON.stringify(room)}</p> */}
     </div>
   } else {

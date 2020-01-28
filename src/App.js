@@ -20,13 +20,17 @@ const App = () => {
       joinRoom({username, password, roomId});
     })
   }
+
+  const backToLogin = () => {
+    setRoomData(null);
+  }
   
   return <div className="container">
     {
       !roomData && <Login onCreate={createRoom} onJoin={joinRoom}/>
     }
     {
-      roomData && <Room {...roomData}/>
+      roomData && <Room {...roomData} onError={backToLogin}/>
     }
   </div>
 }

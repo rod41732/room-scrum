@@ -1,0 +1,20 @@
+.control {
+  display: flex;
+  padding: 1em;
+  
+  .input {
+    flex: 1 0 auto;
+    font-size: 1.2rem;
+    border: 2px solid #dddddd;
+  }
+
+  .btn {
+    width: 128px;
+    font-size: 1.25rem;
+    padding: 0.5em;
+    border: 2px solid #dddddd;
+    margin: 0 0.5em;
+    flex: 0 0 auto;
+  }
+
+}

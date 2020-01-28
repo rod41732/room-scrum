@@ -1,0 +1,51 @@
+$lightgrey: #dddddd;
+
+.login {
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  padding: 48px;
+  
+  .header {
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+  }
+
+  label {
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  input {
+    font-size: 1.25rem;
+    padding: 0.5em;
+    background-color: $lightgrey;
+    margin-bottom: 16px;
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+
+  .btn {
+    font-size: 1.25em;
+    padding: 0.5em;
+    border: 2px solid $lightgrey;
+    border-radius: 8px;
+  }
+
+  .link-btn {
+    display: inline-block;
+    align-self: center;
+    padding: 0.5em;
+    text-decoration: underline;
+  }
+
+
+}

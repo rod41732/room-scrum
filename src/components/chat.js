@@ -24,26 +24,19 @@ const fakeMessages = [
   },
 ]
 
-export const Chat = ({ messages, onSend }) => {
+export const Chat = ({ messages, onSend, myUsername}) => {
   const boxRef = useRef();
   return <div className="chat-container">
     <div className="chat-list">
       {
         messages.map(msg => (
+          <div className={`chat-message ${msg.username === myUsername ? 'self' : ''}`}>
             <div className="chat-wrapper">
               <div className="message-sender"> {msg.username}</div>
               <div className="message-text"> {msg.message}</div>
             </div>
           </div>
         ))
-      }
-      {
-        <div className="chat-message self">
-          <div className="chat-wrapper">
-            <div className="message-sender"> Me </div>
-            <div className="message-text"> Hello world </div>
-          </div>
-        </div>
       }
     </div>
     <div className="chat-controls">
